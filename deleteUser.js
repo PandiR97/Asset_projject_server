@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const connection = require('./db');
 
-router.get('/employeeview', (req, res) => {
+router.delete('/deleteuser', (req, res) => {
   const { userid } = req.body;
-  const query = 'SELECT * FROM assetdata WHERE userid = ? ';
+  const query = 'DELETE FROM assetdata WHERE userid = ? ';
   
   connection.query(query, [userid], (err, results) => {
     if (err) {
@@ -14,9 +14,9 @@ router.get('/employeeview', (req, res) => {
     }
     if (results.length > 0) {
       const user = results[0];
-      res.status(200).json({ message: 'Data Fetched', data: results  });
+      res.status(200).json({ message: 'User Details Detailed Successfully' });
     } else {
-      res.status(401).json({ message: 'Invalid username or password' });
+      res.status(401).json({ message: 'User Not Avialable' });
     }
   });
 

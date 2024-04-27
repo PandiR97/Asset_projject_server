@@ -18,7 +18,6 @@ router.post('/insert-asset', (req, res) => {
       state,
       zipcode,
       laptop_model,
-      welocome_kit,
       headset_pref,
       temp_is_status,
       perm_id_status,
@@ -27,7 +26,8 @@ router.post('/insert-asset', (req, res) => {
       workstationallocated_stat,
       req_space_loc_stat,
       park_pass_stat,
-      comments
+      comments,
+      phonenumber
     } = req.body;
   
     const query = `
@@ -46,7 +46,6 @@ router.post('/insert-asset', (req, res) => {
         state, 
         zipcode, 
         laptop_model, 
-        welocome_kit, 
         headset_pref, 
         temp_is_status, 
         perm_id_status, 
@@ -55,8 +54,10 @@ router.post('/insert-asset', (req, res) => {
         workstationallocated_stat, 
         req_space_loc_stat, 
         park_pass_stat, 
-        comments
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        comments,
+        phonenumber,
+        statflag
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
 
     
@@ -78,7 +79,6 @@ router.post('/insert-asset', (req, res) => {
         state,
         zipcode,
         laptop_model,
-        welocome_kit,
         headset_pref,
         temp_is_status,
         perm_id_status,
@@ -87,7 +87,9 @@ router.post('/insert-asset', (req, res) => {
         workstationallocated_stat,
         req_space_loc_stat,
         park_pass_stat,
-        comments
+        comments,
+        phonenumber,
+        'Y'
       ],
       (err, results) => {
         if (err) {

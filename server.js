@@ -4,8 +4,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const loginRoutes = require('./login');
 const insertAsset = require('./formData');
-const updateData = require('./updateData');
-const deleteData = require('./deleteData');
+const fullName = require('./fullName');
+const adminview = require('./adminview');
+const employeeview = require('./employeeview');
+const deleteuser = require('./deleteUser');
+const updateUser = require('./dataUpdate');
+const statflag = require('./status');
+
 const connection = require('./db');
 
 const app = express();
@@ -16,9 +21,12 @@ app.use(cors());
 
 app.use(loginRoutes);
 app.use(insertAsset);
-app.use(updateData);
-app.use(deleteData);
-
+app.use(fullName);
+app.use(adminview);
+app.use(employeeview);
+app.use(deleteuser);
+app.use(updateUser);
+app.use(statflag)
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
